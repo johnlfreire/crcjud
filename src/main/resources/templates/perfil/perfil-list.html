@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/mainLayout}">
+
+<head>
+<title>Lista de Perfis</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<div class="card-conteudo">
+		<h1 style="text-align: center;">Lista de Perfis</h1>
+		<a class="btn btn-primary" th:href="@{/perfis}">Novo Perfil</a>
+		<form  th:action="@{/perfis/search}" method="post"
+			style="margin: 40px;">
+			<div class="form-column">
+				<p>Nome do Perfil:</p>
+				<input type="text" style="width: 90%" name="nome">
+				<button class="btn btn-primary" type="submit">Pesquisar</button>
+			</div>
+		</form>
+		<div th:replace="layout/fragments/AlertSucess :: alert"></div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Editar</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:if="${pageable.numberOfElements == 0}"><td colspan="2">Nenhum Registro Encontrado</td></tr>
+				<tr th:each="perfil : ${pageable}">
+					<td th:text="${perfil.nome}"></td>
+					<td style="width: 15px;"><a class="btn btn-primary" th:href="@{/perfis/{id}(id=${perfil.id})}">Editar</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:replace="layout/fragments/Pagination :: pagination"></div>
+	</div>
+
+</section>
+</html>

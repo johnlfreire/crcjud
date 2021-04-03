@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/mainLayout}">
+
+<head>
+<title>Cadastro de Entidades</title>
+</head>
+
+
+
+<section layout:fragment="conteudo">
+	<div class="card-conteudo grid-conteudo">
+		<div class="img-form">
+			<img alt=""
+				src="https://image.freepik.com/vetores-gratis/declaracao-legal-notificacao-do-tribunal-decisao-do-juiz-sistema-judicial-advogado-advogado-estudando-papeis-de-personagem-de-desenho-animado-divida-hipotecaria-legislacao_335657-10.jpg"
+				width="100%">
+		</div>
+		<h1 style="text-align: center;" th:text="${entidade.id} ? 'Editar de Entidade' : 'Cadastro de Entidade'"></h1>
+	
+
+		<form th:action="@{/entidades}" method="post"
+			style="margin: 40px;" th:object="${entidade}">
+				 <ul th:if="${#fields.hasErrors('*')}">
+                    <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
+             </ul>
+				<input type="hidden" th:field="*{id}"/>
+			<div class="form-group">
+				<input type="hidden" />			
+				<div class="form-column">
+					<p>Nome:</p>
+					<input type="text" id="nome" th:field="*{nome}">
+				</div>
+				<div class="form-column">
+					<p>Telefone:</p>
+					<input type="text" id="telefone" th:field="*{telefone}">
+				</div>
+				<div class="form-column">
+					<p>E-mail:</p>
+					<input type="text" id="email" th:field="*{email}">
+				</div>
+				<div class="form-column">
+					<p>Endereco:</p>
+					<input type="text" id="endereco" th:field="*{endereco}">
+				</div>
+				<div class="form-column">
+					<p>UF:</p>
+					<select id="comboUf" onchange="getComboCidade(comboUf)" name="uf">
+						<option value="0">Selecione a Estado</option>
+						<option th:if="${entidade.cidade}" th:each="uf : ${ufs}"
+							th:value="${uf.id}" th:text="${uf.nome_uf}"
+							th:selected="${#lists.contains(entidade.cidade.estados,uf)}" />
+						<option th:unless="${entidade.cidade}" th:each="uf : ${ufs}"
+							th:value="${uf.id}" th:text="${uf.nome_uf}" />
+					</select>
+				</div>
+				<div class="form-column">
+					<p>Comarca:</p>
+					<select id="comboCidade" name="cidade" th:field="*{cidade}"
+						th:disabled="!${entidade.cidade}">
+						<option th:if="${entidade.cidade}"
+							th:value="${entidade.cidade.id}"
+							th:text="${entidade.cidade.nome_municipio}"></option>
+				
+					</select>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<button type="submit" th:if="${entidade.id}" class="btn btn-danger">excluir</button>
+		</form>
+	</div>
+
+</section>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div class="pagination" th:if="${pageable.numberOfElements > 0}" th:fragment="pagination">
+			<span th:if="${pageable.hasPrevious()}"> <a
+				th:href="@{/usuario/g4(page=${pageable.number-1})}">&laquo;</a>
+			</span> <a href="#"
+				th:each="p : ${#numbers.sequence(1, pageable.totalPages)}"
+				th:href="@{/usuario/g4(page=${p-1})}"
+				th:class="${#conversions.convert(pageable.number, 'java.lang.Integer') + 1 == p} ? active"
+				th:text="${p}"></a> <span th:if="${pageable.hasNext()}"> <a
+				th:href="@{/usuario/g4(page=${pageable.number+1})}">&raquo;</a>
+			</span>
+		</div>
+
+</html>

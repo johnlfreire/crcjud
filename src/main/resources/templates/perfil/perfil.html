@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/mainLayout}">
+
+<head>
+<title>Cadastro de Perfis</title>
+</head>
+
+
+
+<section layout:fragment="conteudo">
+	<div class="card-conteudo grid-conteudo">
+		<div class="img-form">
+			<img alt=""
+				src="https://image.freepik.com/vetores-gratis/recrutamento-de-profissionais-que-estudam-perfis-de-candidatos_1262-21404.jpg"
+				width="100%">
+		</div>
+		<h1 style="text-align: center;"
+			th:text="${perfil.nome} ? 'Editar de Perfis' : 'Cadastro de Perfil'"></h1>
+
+
+		<form th:action="@{/perfis}" th:object="${perfil}"
+			method="post" style="margin: 40px;">
+			 <ul th:if="${#fields.hasErrors('*')}">
+                    <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
+             </ul>
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-column">
+				<p>Nome do Perfil:</p>
+				<input type="text" th:field="*{nome}" style="width: 100%">
+			</div>
+
+			<fieldset class="form-column" style="width: 100%">
+				<legend>Indique os Privilegios:</legend>
+				<div th:each="permissao : ${permissoes}">
+					<input type="checkbox" th:value="${permissao.id}"
+						th:field="*{permissoes}"> <label for="permissao"
+						th:text="${permissao.nome}">gd</label>
+
+				</div>
+
+			</fieldset>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<button type="submit" th:if="${perfil.id}" class="btn btn-danger">excluir</button>
+		</form>
+	</div>
+
+</section>
+</html>
