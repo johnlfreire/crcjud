@@ -1,12 +1,17 @@
-# crcjud
-Implementação do sistema em spring thymeleaf
+<h1 align="center">CRC JUD</h1>
 
-https://www.youtube.com/watch?v=XzJIDHyATy0
+<h4 align="center"> 
+	🚧  Thymeleaf CRC_JUD 🚀 Em construção...  🚧
+</h4>
+
 
 ### Futuras Atualizações
 
-- [ ]  Implementar mensagens de erro
-- [ ]  Implementar de segurança
-- [ ]  Implementando Flyway
-- [ ]  Implementar Pedidos de Certidões
-- [ ]  Implementar Recibo de Pedido
+- [x] Implementar mensagens de erro
+- [x] Implementar de segurança
+- [x] Implementando Flyway
+- [ ] Implementar Pedidos de Certidões
+- [ ] Implementar Recibo de Pedido
+
+
+[![](http://img.youtube.com/vi/XzJIDHyATy0/0.jpg)](http://www.youtube.com/watch?v=XzJIDHyATy0 "CRC-JUD")
