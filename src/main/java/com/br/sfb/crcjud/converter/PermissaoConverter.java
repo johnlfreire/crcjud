@@ -13,7 +13,7 @@ public class PermissaoConverter implements Converter<String, Permissao>{
 	PermissaoRepository permissaoRepository;
 	@Override
 	public Permissao convert(String id) {
-		return permissaoRepository.findById(Long.parseLong(id));
+		return permissaoRepository.findById(Long.parseLong(id)).get();
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.br.sfb.crcjud.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,22 +17,15 @@ public class Cidade implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String codigoIBGE;	
 	private String nome_municipio;
 	@ManyToOne
-    @JoinColumn(name = "uf")	
+    @JoinColumn(name = "id_estado")	
     private Uf estados;
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getCodigoIBGE() {
-		return codigoIBGE;
-	}
-	public void setCodigoIBGE(String codigoIBGE) {
-		this.codigoIBGE = codigoIBGE;
 	}
 	public String getNome_municipio() {
 		return nome_municipio;

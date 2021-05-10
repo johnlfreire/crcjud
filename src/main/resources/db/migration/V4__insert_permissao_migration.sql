@@ -1,0 +1,11 @@
+insert into crcjud.permissao (nome,descricao) value ("ROLE_ENTIDADE_USUARIO", "Administrador de Entidade Permite ver, adicionar, alterar e excluir usuários da sua Entidade.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_PERFIL", "Configurar Perfil Permite ver, adicionar, alterar e excluir papéis.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_VARA", "Configurar Varas Permite ver, adicionar, alterar e excluir varas.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_ENTIDADE", "Configurar Entidades Permite ver, adicionar, alterar e excluir entidades.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_USUARIO", "Configurar Usuários Permite ver, adicionar, alterar e excluir usuários.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_BUSCA", "Busca Permite utilizar funcionalidade de busca de registros.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_ENTIDADE_ADMINISTRADOR", "Ver todas as Entidades do Convênio Permite ver dados de todas as Entidades do Convênio cadastrado.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_DOCUMENTOS", "Anexar Documento Permite anexar documentos.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_ADMINISTRAR", "Administrador Permite configurar e visualizar todas as ações do sitema.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_VALIDAR", "Validar Cadastro de Usuários Permite validar cadastro de usuários.");
+insert into crcjud.permissao (nome,descricao) value ("ROLE_CERTIDAO", "Solicitar Certidão Permite solicitar via de certidão.");

@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS uf (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome_uf VARCHAR(50) NOT NULL,
+    sigla_uf VARCHAR(2) NOT NULL
+) ;
+
+CREATE TABLE  IF NOT EXISTS cidade (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome_municipio VARCHAR(100) NOT NULL,
+    id_estado BIGINT NOT NULL,
+    FOREIGN KEY (id_estado) REFERENCES uf(id)
+);

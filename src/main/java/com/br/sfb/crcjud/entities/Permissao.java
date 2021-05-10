@@ -21,9 +21,10 @@ public class Permissao implements Serializable {
 	private Long id;
 	@NotBlank(message = "Nome é Obrigatorio")
 	private String nome;
-
+	private String descricao;
+	
 	public Long getId() {
-		return id;
+		return id; 
 	}
 
 	public void setCodigo(Long id) {
@@ -36,6 +37,14 @@ public class Permissao implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 

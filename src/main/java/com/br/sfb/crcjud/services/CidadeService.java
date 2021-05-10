@@ -1,10 +1,8 @@
 package com.br.sfb.crcjud.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.br.sfb.crcjud.entities.Cidade;
 import com.br.sfb.crcjud.repository.CidadeRepository;
 
@@ -20,6 +18,7 @@ public class CidadeService {
 		return cidadeRepository.findByEstadosId(uf);
 	}
 	public Cidade findById(long id) {		
-		return cidadeRepository.findById(id).get();
+		Cidade cidades = cidadeRepository.findById(id).get();
+		return cidades;
 	}
 }

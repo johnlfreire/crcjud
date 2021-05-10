@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -26,6 +27,7 @@ public class Entidade implements Serializable{
 	private String endereco;
 	@NotNull(message = "É necessario informar a comarca")
 	@ManyToOne
+	@JoinColumn(name="id_cidade")
 	private Cidade cidade;
 	
 	

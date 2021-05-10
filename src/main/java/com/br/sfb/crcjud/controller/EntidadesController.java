@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,7 @@ import com.br.sfb.crcjud.services.UfService;
 
 @Controller
 @RequestMapping("entidades")
+@PreAuthorize("hasAnyRole('ROLE_ADMINISTRAR','ROLE_ENTIDADE')")
 public class EntidadesController {
 
 @Autowired
@@ -37,10 +39,8 @@ public ModelAndView entidadeIndex(Entidade entidade) {
 }
 @PostMapping
 public ModelAndView entidadeSave(@Valid Entidade entidade,BindingResult result, RedirectAttributes attributes) {
-	System.out.println(result.hasErrors());
 	if(result.hasErrors())
     {
-		System.out.println("Erro");
 		return entidadeIndex(entidade);
     }
 	attributes.addFlashAttribute("mensagem", "Entidade salva com sucesso!");
@@ -54,7 +54,6 @@ public String entidadeList(Pageable pageable,Model model) {
 }
 @GetMapping("/{id}")
 public ModelAndView entidadeUpdate(@PathVariable("id") long id,Model model) {
-	System.out.println(id);
 	ModelAndView mv = new ModelAndView("entidade/entidade");
 	model.addAttribute("entidade",entidadeService.findById(id));
 	model.addAttribute("ufs",ufService.findAll());

@@ -18,8 +18,8 @@ public class UsuarioServicoDetails extends User implements UserDetails{
 
 	private Usuario usuario;
 
-	public UsuarioServicoDetails(Usuario usuario, Collection<? extends GrantedAuthority> authorities) {
-		super(usuario.getEmail(), usuario.getSenha(), authorities);
+	public UsuarioServicoDetails(Usuario usuario, Collection<? extends GrantedAuthority> authorities) {		
+		super(usuario.getEmail(), usuario.getSenha(), authorities);		
 		this.usuario = usuario;
 	}
 

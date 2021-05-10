@@ -18,14 +18,12 @@
 				src="https://image.freepik.com/vetores-gratis/declaracao-legal-notificacao-do-tribunal-decisao-do-juiz-sistema-judicial-advogado-advogado-estudando-papeis-de-personagem-de-desenho-animado-divida-hipotecaria-legislacao_335657-10.jpg"
 				width="100%">
 		</div>
-		<h1 style="text-align: center;" th:text="${entidade.id} ? 'Editar de Entidade' : 'Cadastro de Entidade'"></h1>
+		<h1 style="text-align: center;" th:text="${entidade.id} ? 'Editar de Entidade' : 'Cadastro de Entidades'"></h1>
 	
 
 		<form th:action="@{/entidades}" method="post"
 			style="margin: 40px;" th:object="${entidade}">
-				 <ul th:if="${#fields.hasErrors('*')}">
-                    <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
-             </ul>
+				 	<div th:replace="layout/fragments/AlertErro :: alertErro"></div>
 				<input type="hidden" th:field="*{id}"/>
 			<div class="form-group">
 				<input type="hidden" />			
@@ -35,11 +33,11 @@
 				</div>
 				<div class="form-column">
 					<p>Telefone:</p>
-					<input type="text" id="telefone" th:field="*{telefone}">
+					<input type="text" maxlength="14" th:field="*{telefone}">
 				</div>
 				<div class="form-column">
 					<p>E-mail:</p>
-					<input type="text" id="email" th:field="*{email}">
+					<input type="email" id="email" th:field="*{email}">
 				</div>
 				<div class="form-column">
 					<p>Endereco:</p>
@@ -68,9 +66,13 @@
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Salvar</button>
-			<button type="submit" th:if="${entidade.id}" class="btn btn-danger">excluir</button>
+<!-- 			<button type="submit" th:if="${entidade.id}" class="btn btn-danger">excluir</button> -->
 		</form>
 	</div>
 
 </section>
+ <th:block layout:fragment="script">
+<script type="text/javascript" src="/js/cidade.js"></script>
+<script type="text/javascript" src="/js/maskTelefone.js"></script>
+</th:block>
 </html>

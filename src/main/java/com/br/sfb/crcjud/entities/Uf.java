@@ -18,7 +18,6 @@ public class Uf implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
-	private long codIbge;
 	private String nome_uf;
 	private String sigla_uf;
 	
@@ -27,12 +26,6 @@ public class Uf implements Serializable {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public long getCodIbge() {
-		return codIbge;
-	}
-	public void setCodIbge(long codIbge) {
-		this.codIbge = codIbge;
 	}
 	public String getNome_uf() {
 		return nome_uf;

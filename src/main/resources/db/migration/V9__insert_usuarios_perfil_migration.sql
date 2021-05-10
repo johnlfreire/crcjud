@@ -1,0 +1,14 @@
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Administrador","adm@registrocivil.org.br","111.111.111-11","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,1,1);
+insert into usuario_perfil values(1,1);
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Marcos Aurelio","marcos@tjsp.jus.br","333.333.333-33","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,4,6);
+insert into usuario_perfil values(2,2);
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Alberto Junior","alberto@tjsp.jus.br","222.222.222-22","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,4,5);
+insert into usuario_perfil values(3,2);
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Felipe Silva","felipe@mpmg.gov.br","444.444.444-44","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,3,3);
+insert into usuario_perfil values(4,4);
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Carlos Leite","carlos@tjac.jus.br","555.555.555-55","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,5,10);
+insert into usuario_perfil values(5,2);
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Pedro Paulo","pedro@pfl.gov.br","666.666.666-66","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,7,13);
+insert into usuario_perfil values(6,4);
+insert into usuario (nome,email,cpf,senha,telefone,ativo,id_cidade,id_entidade,id_vara) values ("Eduardo Felipo","eduardo@tjsp.jus.br","777.777.777-77","$2a$10$6JsnKXgqjH6jYQl/ydnhLub1afkh7Db7TnfC34H96WAGFHqwjNE.e","(11)1111-1111",1,5270,4,6);
+insert into usuario_perfil values(7,3);

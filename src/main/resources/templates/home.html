@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/mainLayout}">
+
+<head>
+<title>Home</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<div class="card-conteudo">
+		<h1>Busca de Registros</h1>
+		<hr>
+		<div class="cards">
+			<div class="card">
+				<h1>Busca de Registros</h1>
+				<!--            <i class='bx bx-search badge'></i>                    -->
+			</div>
+			<div class="card">
+				<h1>Relatório de Buscas Realizadas</h1>
+			</div>
+		</div>
+	</div>
+	<div class="card-conteudo">
+		<h1>Mandados Eletrônicos</h1>
+		<hr>
+		<div class="cards">
+			<div class="card">
+				<h2>Mandados Pendentes</h2>
+				<span class="badge">10</span>
+			</div>
+			<div class="card">
+				<h2>Mandados Cumpridos</h2>
+				<span class="badge">10</span>
+			</div>
+			<div class="card">
+				<h2>Mandados Rejeitados</h2>
+				<span class="badge">10</span>
+			</div>
+		</div>
+	</div>
+	<div class="card-conteudo">
+		<h1>2ª Via de Certidões</h1>
+		<hr>
+		<div class="cards">
+			<div class="card">
+				<h2>Certidões Pendentes</h2>
+				<span class="badge">10</span>
+			</div>
+			<div class="card">
+				<h2>Certidões Cumpridos</h2>
+				<span class="badge">10</span>
+			</div>
+			<div class="card">
+				<h2>Certidões Rejeitados</h2>
+				<span class="badge">10</span>
+			</div>
+		</div>
+	</div>
+
+</section>
+</html>

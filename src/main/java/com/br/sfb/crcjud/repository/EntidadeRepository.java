@@ -9,4 +9,5 @@ import com.br.sfb.crcjud.entities.Entidade;
 public interface EntidadeRepository extends PagingAndSortingRepository<Entidade, Long>{
 	 Page<Entidade> findByNomeContaining(String nome, Pageable pageable);
 	 
+	
 }

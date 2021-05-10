@@ -1,0 +1,24 @@
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Administracao","adm@registrocivil.com.br","(11)1111-1111","Travessa 101",5270);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Ministerio Publico de São Paulo","minis@mpsp.gov.br","(11)1111-1111","Travessa 101",5270);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Ministerio Publico de Minas Gerais","minis@mpmg.gov.br","(11)1111-1111","Travessa 101",1630);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Tribunal do estado de São Paulo","tjsp@tjsp.jus.br","(11)1111-1111","Travessa 101",5270);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Tribunal do estado do Acre","tjac@tjac.jus.br","(11)1111-1111","Travessa 101",94);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Tribunal do estado de Goias","tjgo@tjgo.jus.br","(11)1111-1111","Travessa 101",3251);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Policia Federal","plf@pfl.gov.br","(11)1111-1111","Travessa 101",81);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Defensoria Civil do Acre","def@def.gov.br","(11)1111-1111","Travessa 101",94);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Tribunal do estado da Bahia","tjbs@tjba.jus.br","(11)1111-1111","Travessa 101",616);
+insert into entidade (nome,email,telefone,endereco,id_cidade) values ("Tribunal do estado de Pernambuco","tjpe@tjpe.jus.br","(11)1111-1111","Travessa 101",3315);
+
+insert into vara (nome,id_cidade,id_entidade) values ("Administracao",5270,1);
+insert into vara (nome,id_cidade,id_entidade) values ("Ministerio Publico de São Paulo",5270,2);
+insert into vara (nome,id_cidade,id_entidade) values ("Ministerio Publico de Minas Gerais",1630,3);
+insert into vara (nome,id_cidade,id_entidade) values ("Primeira Vara de Registros Publicos",5270,4);
+insert into vara (nome,id_cidade,id_entidade) values ("Primeira Vara Civil",5270,4);
+insert into vara (nome,id_cidade,id_entidade) values ("Segunda Vara Civil",5270,4);
+insert into vara (nome,id_cidade,id_entidade) values ("Primeira Vara Criminal",5270,4);
+insert into vara (nome,id_cidade,id_entidade) values ("Segunda Vara Criminal",5270,4);
+insert into vara (nome,id_cidade,id_entidade) values ("Segunda Vara Criminal de Guarulhos",4920,4);
+insert into vara (nome,id_cidade,id_entidade) values ("Primeira Vara de Acrelândia",79,5);
+insert into vara (nome,id_cidade,id_entidade) values ("Primeira vara do Rio Branco",94,5);
+insert into vara (nome,id_cidade,id_entidade) values ("Primeira vara criminal de Hidrolândia",987,6);
+insert into vara (nome,id_cidade,id_entidade) values ("Policia Federal",81,7);

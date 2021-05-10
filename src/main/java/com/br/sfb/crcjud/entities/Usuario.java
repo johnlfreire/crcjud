@@ -5,11 +5,10 @@ package com.br.sfb.crcjud.entities;
 
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,29 +41,33 @@ public class Usuario implements Serializable {
 	@NotBlank(message = "E-mail é obrigatório")
 	@Email(message = "E-mail inválido")
 	private String email;
-	@NotNull(message = "É necessario informar um cpf")
+	@NotBlank(message = "É necessario informar um cpf")
 	private String cpf;
 	private String telefone;
-	@NotNull(message = "É necessario informar uma senha")
+	@NotBlank(message = "É necessario informar uma senha")
 	private String senha;
 	@NotNull(message = "É necessario informar a vara")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_vara")
 	private Vara vara;
+	@NotNull(message = "É necessario informar a entidade")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_entidade")
+	private Entidade entidade;
 	@NotNull(message = "É necessario informar a comarca")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_cidade")
 	private Cidade cidade;
 	
 	private Boolean ativo;
 
 	@Size(min = 1, message = "Selecione pelo menos pelo um perfil")	
 	@ManyToMany
-	@JoinTable(name = "usuario_perfil", joinColumns = @JoinColumn(name = "codigo_usuario")
-				, inverseJoinColumns = @JoinColumn(name = "codigo_perfil"))	
+	@JoinTable(name = "usuario_perfil", joinColumns = @JoinColumn(name = "id_usuario")
+				, inverseJoinColumns = @JoinColumn(name = "id_perfil"))	
 	private List<Perfil> perfis;
 
-	@Column(name = "data_nascimento")
-	private LocalDate dataNascimento;
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -97,13 +100,6 @@ public class Usuario implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
 
 	public List<Perfil> getPerfis() {
 		return perfis;
@@ -155,6 +151,14 @@ public class Usuario implements Serializable {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+
+	public Entidade getEntidade() {
+		return entidade;
+	}
+
+	public void setEntidade(Entidade entidade) {
+		this.entidade = entidade;
 	}	
 
 }

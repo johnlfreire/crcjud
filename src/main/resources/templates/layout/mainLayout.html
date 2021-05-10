@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	>
 
 
     <head>
@@ -21,6 +23,9 @@
             <div class="header__toggle">
                 <i class='bx bx-menu' id="header-toggle"></i>
             </div>
+            <div>
+              <p class="navbar-text" th:text="${#authentication.principal.usuario.nome}">Usuário</p>
+            </div>
         </header>
 
         <div class="l-navbar" id="nav-bar">
@@ -33,40 +38,39 @@
 
                     <div class="nav__list">
                         <a th:href="@{/home}" th:classappend="${#request.requestURI.startsWith('/home') ? 'active':''}" class="nav__link">
-                        <i class='bx bx-grid-alt nav__icon' ></i>
+                        <i class='bx bx-home nav__icon' ></i>
                             <span class="nav__name">Dashboard</span>
                         </a>
-
-                        <a th:href="@{/usuarios}" th:classappend="${#request.requestURI.startsWith('/usuarios') ? 'active':''}" class="nav__link">
-                            <i class='bx bx-user nav__icon' ></i>
-                            <span class="nav__name" >Usuario</span>
-                        </a>
-                        
-                        <a th:href="@{/entidades/list}" th:classappend="${#request.requestURI.startsWith('/entidades/list') ? 'active':''}" class="nav__link">
-                            <i class='bx bx-message-square-detail nav__icon' ></i>
-                            <span class="nav__name">Entidades</span>
-                        </a>
-
-                        <a th:href="@{/perfis/list}" th:classappend="${#request.requestURI.startsWith('/perfis/list') ? 'active':''}" class="nav__link">
-                            <i class='bx bx-bookmark nav__icon' ></i>
+                          <a sec:authorize="hasAnyRole('ROLE_PERFIL','ROLE_ADMINISTRAR')" th:href="@{/perfis/list}" th:classappend="${#request.requestURI.startsWith('/perfis/list') ? 'active':''}" class="nav__link">
+<!--                        <a th:href="@{/perfis/list}" th:classappend="${#request.requestURI.startsWith('/perfis/list') ? 'active':''}" class="nav__link"> -->
+                            <i class='bx bx-lock-open-alt nav__icon' ></i>
                             <span class="nav__name">Perfis</span>
                         </a>
-
-                        <a th:href="@{/varas/list}" th:classappend="${#request.requestURI.startsWith('/varas') ? 'active':''}" class="nav__link">
-                            <i class='bx bx-folder nav__icon' ></i>
+                             <a sec:authorize="hasAnyRole('ROLE_ENTIDADE','ROLE_ADMINISTRAR')" th:href="@{/entidades/list}" th:classappend="${#request.requestURI.startsWith('/entidades/list') ? 'active':''}" class="nav__link">
+                          	<i class='bx bx-group nav__icon'></i>
+                          
+                            <span class="nav__name">Entidades</span>
+                        </a>            
+                        <a sec:authorize="hasAnyRole('ROLE_VARA','ROLE_ADMINISTRAR','ROLE_ENTIDADE_ADMINISTRADOR')" th:href="@{/varas/list}" th:classappend="${#request.requestURI.startsWith('/varas') ? 'active':''}" class="nav__link">
+                            <i class='bx bxs-landmark nav__icon'></i>
                             <span class="nav__name">Varas</span>
                         </a>
+                        <a sec:authorize="hasAnyRole('ROLE_USUARIO','ROLE_ADMINISTRAR','ROLE_ENTIDADE_ADMINISTRADOR')" th:href="@{/usuarios/list}" th:classappend="${#request.requestURI.startsWith('/usuarios/list') ? 'active':''}" class="nav__link">
+                            <i class='bx bx-user nav__icon'></i>
+                            <span class="nav__name" >Usuarios</span>
+                        </a>                        
+                   
 
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-bar-chart-alt-2 nav__icon' ></i>
-                            <span class="nav__name">Analytics</span>
-                        </a>
+<!--                         <a href="#" class="nav__link"> -->
+<!--                             <i class='bx bx-bar-chart-alt-2 nav__icon' ></i> -->
+<!--                             <span class="nav__name">Analytics</span> -->
+<!--                         </a> -->
                     </div>
                 </div>
 
-                <a href="#" class="nav__link">
+                <a th:href="@{/logout}" class="nav__link">
                     <i class='bx bx-log-out nav__icon' ></i>
-                    <span class="nav__name">Log Out</span>
+                    <span class="nav__name">Sair</span>
                 </a>
             </nav>
         </div>
@@ -75,6 +79,6 @@
 
         <!--===== MAIN JS =====-->
         <script src="/js/main.js"></script>
-        	<script  type="text/javascript" src="/js/cidade.js"></script>
+         <th:block layout:fragment="script"></th:block>	
     </body>
 </html>

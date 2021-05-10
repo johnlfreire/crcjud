@@ -13,10 +13,10 @@
 	<div class="card-conteudo">
 		<h1 style="text-align: center;">Lista de Usuarios</h1>
 		<a class="btn btn-primary" th:href="@{/usuarios}">Nova Usuario</a>
-		<form th:action="@{/usuarios/search}" method="post"
+	<form  th:action="@{/usuarios/search}" method="post"
 			style="margin: 40px;">
 			<div class="form-column">
-				<p>Nome da Usuario:</p>
+				<p>Nome, Cpf ou Email do Usuário:</p>
 				<input type="text" style="width: 90%" name="nome">
 				<button class="btn btn-primary" type="submit">Pesquisar</button>
 			</div>

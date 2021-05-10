@@ -23,9 +23,6 @@ private CidadeService cidadeService;
     @ResponseBody()
     @Cacheable("cidade")
     public List<Cidade> cidadesFindUf(@RequestParam(name = "id", defaultValue = "-1") Long id) {    	
-    	System.out.println(id);
-    	List<Cidade> cidade = cidadeService.findAllUf(id);
-    	System.out.println(cidade);
         return cidadeService.findAllUf(id);
     }
 }

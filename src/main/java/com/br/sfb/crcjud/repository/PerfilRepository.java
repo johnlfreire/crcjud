@@ -8,6 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import com.br.sfb.crcjud.entities.Perfil;
 
 public interface PerfilRepository extends PagingAndSortingRepository<Perfil, Long>{
-	 Page<Perfil> findByNome(String nome, Pageable pageable);
+	 Page<Perfil> findByNomeContaining(String nome, Pageable pageable);
+	 
 	 List<Perfil> findAll();
 }

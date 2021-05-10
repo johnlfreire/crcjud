@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,13 +19,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.br.sfb.crcjud.entities.Usuario;
 import com.br.sfb.crcjud.entities.Vara;
 import com.br.sfb.crcjud.services.EntidadeService;
 import com.br.sfb.crcjud.services.UfService;
+import com.br.sfb.crcjud.services.UsuarioService;
 import com.br.sfb.crcjud.services.VaraService;
 
 @Controller
 @RequestMapping("/varas")
+@PreAuthorize("hasAnyRole('ROLE_ADMINISTRAR','ROLE_PERFIL','ROLE_ENTIDADE_ADMINISTRADOR')")
 public class VarasController {
 
 	@Autowired
@@ -33,22 +37,31 @@ public class VarasController {
 	private EntidadeService entidadeService;
 	@Autowired
 	private VaraService varaService;
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@GetMapping
 	public ModelAndView varaIndex(Vara vara) {
 		ModelAndView mv = new ModelAndView("vara/vara");
 		mv.addObject("vara", vara);
+		if(usuarioService.possuiPermissao("ROLE_ADMINISTRAR")) {	
 		mv.addObject("ufs", ufService.findAll());
 		mv.addObject("entidades", entidadeService.findAll());
+		}
+		else {
+			Usuario usuarioLogado = usuarioService.usuarioLogado();
+			mv.addObject("ufs", usuarioLogado.getCidade().getEstados());
+			mv.addObject("entidades", usuarioLogado.getEntidade());
+		}
+
 		return mv;
 	}
 
 	@PostMapping()
 	public ModelAndView varaSave(@Valid Vara vara,BindingResult result, RedirectAttributes attributes) {
-		System.out.println(result.hasErrors());
+
 		if(result.hasErrors())
         {
-			System.out.println("Erro");
 			return varaIndex(vara);
         }
 		
@@ -59,19 +72,34 @@ public class VarasController {
 
 	@GetMapping("/list")
 	public String varaList(Pageable pageable,Model model) {	
-		model.addAttribute("pageable", varaService.findAllPageable(pageable));
+		if(usuarioService.possuiPermissao("ROLE_ADMINISTRAR")) {	
+			model.addAttribute("pageable", varaService.findAllPageable(pageable));
+			}
+			else {
+				Usuario usuarioLogado = usuarioService.usuarioLogado();
+				model.addAttribute("pageable", varaService.findByEntidade(usuarioLogado.getEntidade(),pageable));
+			}
+		
+
 		return "vara/vara-list";
 	}
 	@GetMapping("/{id}")
 	public ModelAndView varaUpdate(@PathVariable("id") long id,Model model) {
 		ModelAndView mv = new ModelAndView("vara/vara");
 		model.addAttribute("vara", varaService.findId(id));
-		model.addAttribute("ufs", ufService.findAll());
-		model.addAttribute("entidades", entidadeService.findAll());
+		if(usuarioService.possuiPermissao("ROLE_ADMINISTRAR")) {	
+			mv.addObject("ufs", ufService.findAll());
+			mv.addObject("entidades", entidadeService.findAll());
+			}
+			else {
+				Usuario usuarioLogado = usuarioService.usuarioLogado();
+				mv.addObject("ufs", usuarioLogado.getCidade().getEstados());
+				mv.addObject("entidades", usuarioLogado.getEntidade());
+			}
 		return mv;	
 	}
 	@PostMapping("/search")
-	public String varaSearch(@RequestParam String nome,Model model,Pageable pageable) {	
+	public String varaSearch(@RequestParam String nome,Model model,Pageable pageable) {			
 		model.addAttribute("pageable", varaService.findNamePageable(nome,pageable));
 		return "vara/vara-list";
 	}	

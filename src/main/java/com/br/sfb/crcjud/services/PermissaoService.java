@@ -13,6 +13,7 @@ public class PermissaoService{
 @Autowired
 private PermissaoRepository permissaoRepository;
 
+
 	public List<Permissao> findAll() {
 		return permissaoRepository.findAll();
 	}	

@@ -7,7 +7,7 @@
   --nav-width: 68px;
 
   /*===== Colors =====*/
-  --first-color: #4723D9;
+  --first-color: #00483f;
   --first-color-light: #AFA5D9;
   --white-color: #F7F6FB;
   
@@ -210,10 +210,15 @@ a{
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
   cursor: pointer;
   transition: all 0.3s ease 0s;
- border-radius: 5px; 
-
+  border-radius: 5px; 
+  text-align: center;
 }
-
+.badge {
+    color: #fefefe;
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
 .card:hover {
   transform: translateY(-7px);
 }
@@ -222,7 +227,7 @@ a{
   margin: 30px;	
   padding:20px;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
-   border-radius: 5px; 
+  border-radius: 5px; 
 }
 .grid-conteudo{
 display: grid;
@@ -328,7 +333,7 @@ grid-row: 1 / 4;
 .alert-success {background-color: #4CAF50;}
 .alert-info {background-color: #2196F3;}
 .alert-warning {background-color: #ff9800;}
-
+.alert-danger{background-color: #F44336;}
 .closebtn {
   margin-left: 15px;
   color: white;

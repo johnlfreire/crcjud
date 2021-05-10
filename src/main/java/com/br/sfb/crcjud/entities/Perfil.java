@@ -25,7 +25,7 @@ public class Perfil implements Serializable {
 	private Long id;
 	@NotBlank(message = "Nome é Obrigatorio")
 	private String nome;
-    
+     
 	@ManyToMany
 	@JoinTable(name = "perfil_permissao", joinColumns = @JoinColumn(name = "id_perfil"), inverseJoinColumns = @JoinColumn(name = "id_permissao"))
 	private List<Permissao> permissoes;

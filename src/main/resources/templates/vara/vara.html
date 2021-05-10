@@ -18,12 +18,11 @@
 				src="https://image.freepik.com/vetores-gratis/ilustracao-do-conceito-de-juiz_114360-2189.jpg"
 				width="100%">
 		</div>
-
+	<h1 style="text-align: center;" th:text="${vara.id} ? 'Editar de Vara' : 'Cadastro de Varas'"></h1>
+	
 		<form  th:action="@{/varas}" method="post"
 			style="margin: 40px;" th:object="${vara}">
-				 <ul th:if="${#fields.hasErrors('*')}">
-                    <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
-             </ul>
+					<div th:replace="layout/fragments/AlertErro :: alertErro"></div>
 			<input type="hidden" th:field="*{id}" />
 			<div class="form-column">
 				<p>Nome da Vara:</p>
@@ -62,9 +61,12 @@
 
 
 			<button type="submit" class="btn btn-primary">Salvar</button>
-			<button type="submit" class="btn btn-danger">excluir</button>
+<!-- 			<button type="submit" th:if="${vara.id}" class="btn btn-danger">excluir</button> -->
 		</form>
 	</div>
 
 </section>
+ <th:block layout:fragment="script">
+<script type="text/javascript" src="/js/cidade.js"></script>
+</th:block>
 </html>

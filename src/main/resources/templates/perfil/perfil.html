@@ -19,14 +19,14 @@
 				width="100%">
 		</div>
 		<h1 style="text-align: center;"
-			th:text="${perfil.nome} ? 'Editar de Perfis' : 'Cadastro de Perfil'"></h1>
+			th:text="${perfil.id} ? 'Editar de Perfis' : 'Cadastro de Perfis'"></h1>
 
 
 		<form th:action="@{/perfis}" th:object="${perfil}"
 			method="post" style="margin: 40px;">
-			 <ul th:if="${#fields.hasErrors('*')}">
-                    <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
-             </ul>
+
+		<div th:replace="layout/fragments/AlertErro :: alertErro"></div>
+			
 			<input type="hidden" th:field="*{id}" />
 			<div class="form-column">
 				<p>Nome do Perfil:</p>
@@ -38,15 +38,17 @@
 				<div th:each="permissao : ${permissoes}">
 					<input type="checkbox" th:value="${permissao.id}"
 						th:field="*{permissoes}"> <label for="permissao"
-						th:text="${permissao.nome}">gd</label>
+						th:text="${permissao.descricao}"				
+						></label>
 
 				</div>
 
 			</fieldset>
 			<button type="submit" class="btn btn-primary">Salvar</button>
-			<button type="submit" th:if="${perfil.id}" class="btn btn-danger">excluir</button>
+<!-- 			<button type="submit" th:if="${perfil.id}" class="btn btn-danger">excluir</button> -->
 		</form>
 	</div>
 
 </section>
+
 </html>

@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-		.antMatchers("/layout/**").antMatchers("/usuario/**");
+		.antMatchers("/layout/**").antMatchers("/img/**");
 	}
 	 @Autowired
 	 public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {    
@@ -40,9 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  @Override
  protected void configure(final HttpSecurity http) throws Exception {
      http.authorizeRequests()
-		.antMatchers("/**","/usuario").permitAll()
+		.antMatchers("/**").authenticated()
 		.and()
-        .formLogin()      
+        .formLogin()    
+        .loginPage("/login").defaultSuccessUrl("/home",true) 
         .permitAll()
         .and().logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));

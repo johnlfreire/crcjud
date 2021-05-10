@@ -3,8 +3,11 @@ function limparComboCidade() {
 	option = new Option("Selecione a cidade", 0);
 	comboCidade.options[comboCidade.options.length] = option;
 	document.getElementById("comboCidade").disabled = false;
+	if(document.getElementById("comboVara")){
 	document.getElementById("comboVara").disabled = true;
 	limparComboVara();
+	}
+	
 }
 function limparComboVara() {
 	document.getElementById("comboVara").options.length = 0;
@@ -41,7 +44,9 @@ function getVara(cidade){
 			valuedd = json
 			console.log(valuedd);
 			limparComboVara();
+			if(document.getElementById("comboVara")){
 			document.getElementById("comboVara").disabled = false;
+			}
 			valuedd.forEach((language) => {
 				option = new Option(language.nome, language.id);
 				console.log(option);
@@ -50,15 +55,4 @@ function getVara(cidade){
 
 		}
 		)
-}
-const tel = document.getElementById('cpf') // Seletor do campo de telefone
-
-tel.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
-tel.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
-
-const mascaraTelefone = (valor) => {
-    valor = valor.replace(/\D/g, "")
-    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
-    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
-    cpf.value = valor // Insere o(s) valor(es) no campo
 }
