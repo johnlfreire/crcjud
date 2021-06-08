@@ -10,6 +10,7 @@
 - [x] Implementar mensagens de erro
 - [x] Implementar de segurança
 - [x] Implementando Flyway
+- [ ] Validação de CPF
 - [ ] Implementar Pedidos de Certidões
 - [ ] Implementar Recibo de Pedido
 
